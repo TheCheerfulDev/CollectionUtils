@@ -12,7 +12,7 @@ public class Maps {
                 .filter(leftEntry -> rightMap.containsKey(leftEntry.getKey()))
                 .filter(leftEntry -> !rightMap.get(leftEntry.getKey()).equals(leftEntry.getValue()))
                 .map(leftEntry -> new DiffResult<>(leftEntry.getKey(), leftEntry.getValue(), rightMap.get(leftEntry.getKey())))
-                .collect(Collectors.toMap(DiffResult::getKey, Function.identity()));
+                .collect(Collectors.toUnmodifiableMap(DiffResult::getKey, Function.identity()));
     }
 
     public static class DiffResult<K, V> {
