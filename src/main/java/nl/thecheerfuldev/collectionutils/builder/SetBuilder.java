@@ -1,5 +1,6 @@
 package nl.thecheerfuldev.collectionutils.builder;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ public class SetBuilder<T> {
         set = new HashSet<>();
     }
 
-    public SetBuilder(Set<T> input) {
+    public SetBuilder(Collection<? extends T> input) {
         this();
         set.addAll(input);
     }

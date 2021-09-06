@@ -3,36 +3,36 @@ package nl.thecheerfuldev.collectionutils.builder;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SetBuilderTest {
+class ListBuilderTest {
 
     @Test
     void builder_creates_set_with_same_content() {
-        Set<String> actual = new SetBuilder<String>()
+        List<String> actual = new ListBuilder<String>()
                 .add("A")
                 .add("B")
                 .add("C")
                 .build();
 
-        Set<String> expected = Set.of("A", "B", "C");
+        List<String> expected = List.of("A", "B", "C");
 
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
 
     @Test
     void builder_with_initial_set_creates_set_with_same_content() {
-        Set<String> initial = Set.of("A", "B", "C");
+        List<String> initial = List.of("A", "B", "C");
 
-        Set<String> actual = new SetBuilder<>(initial)
+        List<String> actual = new ListBuilder<>(initial)
                 .add("D")
                 .add("E")
                 .add("F")
                 .build();
 
-        Set<String> expected = Set.of("A", "B", "C", "D", "E", "F");
+        List<String> expected = List.of("A", "B", "C", "D", "E", "F");
 
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
