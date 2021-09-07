@@ -1,6 +1,11 @@
 package nl.thecheerfuldev.collectionutils.difference;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -13,6 +18,27 @@ public class Maps {
                 .filter(leftEntry -> !rightMap.get(leftEntry.getKey()).equals(leftEntry.getValue()))
                 .map(leftEntry -> new DiffResult<>(leftEntry.getKey(), leftEntry.getValue(), rightMap.get(leftEntry.getKey())))
                 .collect(Collectors.toUnmodifiableMap(DiffResult::getKey, Function.identity()));
+    }
+
+    public static <K, V> Map<K, Set<V>> union(Map<K, V> leftMap, Map<K, V> rightMap) {
+        Map<K, Set<V>> result = new HashMap<>();
+
+        leftMap.forEach((k, v) -> {
+            result.putIfAbsent(k, new HashSet<>());
+            result.get(k).add(v);
+        });
+
+        rightMap.forEach((k, v) -> {
+            result.putIfAbsent(k, new HashSet<>());
+            result.get(k).add(v);
+        });
+
+        result.forEach((k, v) -> {
+            result.get(k);
+            result.put(k, Set.copyOf(result.get(k)));
+        });
+
+        return Map.copyOf(result);
     }
 
     public static class DiffResult<K, V> {
