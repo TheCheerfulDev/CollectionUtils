@@ -108,10 +108,29 @@ class ListsTest {
     }
 
     @Test
-    void difference_with_completely_different_Lists_returns_first_list() {
+    void difference_with_completely_different_lists_returns_first_list() {
         List<String> list1 = List.of("A", "B", "C");
         List<String> list2 = List.of("X", "Y", "Z");
 
         assertThat(Lists.difference(list1, list2)).containsExactlyInAnyOrderElementsOf(list1);
+    }
+
+    @Test
+    void union_with_same_list_returns_list_with_duplicates() {
+        List<String> list1 = List.of("A", "B", "C");
+
+        List<String> expected = List.of("A", "B", "C", "A", "B", "C");
+
+        assertThat(Lists.union(list1, list1)).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @Test
+    void union_with_completely_different_lists_returns_complete_list() {
+        List<String> list1 = List.of("A", "B", "C");
+        List<String> list2 = List.of("X", "Y", "Z");
+
+        List<String> expected = List.of("A", "B", "C", "X", "Y", "Z");
+
+        assertThat(Lists.union(list1, list2)).containsExactlyInAnyOrderElementsOf(expected);
     }
 }

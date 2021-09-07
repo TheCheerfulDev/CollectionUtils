@@ -14,9 +14,22 @@ public class ListBuilder<T> {
         list = new ArrayList<>();
     }
 
+    public ListBuilder(T input) {
+        this();
+        list.add(input);
+    }
+
     public ListBuilder(Collection<? extends T> input) {
         this();
         list.addAll(input);
+    }
+
+    public static <T> ListBuilder<T> builder(T input) {
+        return new ListBuilder<>(input);
+    }
+
+    public static <T> ListBuilder<T> builder(Collection<? extends T> input) {
+        return new ListBuilder<>(input);
     }
 
     public ListBuilder<T> add(T input) {

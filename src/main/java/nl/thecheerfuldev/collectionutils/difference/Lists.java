@@ -16,4 +16,8 @@ public class Lists {
         return List.copyOf(CollectionsUtil.difference(list1, list2));
     }
 
+    public static <T> List<T> union(List<T> list1, List<T> list2) {
+        return List.copyOf(CollectionsUtil.union(list1, list2));
+    }
+
 }

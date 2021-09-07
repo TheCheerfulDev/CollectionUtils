@@ -34,4 +34,10 @@ class CollectionsUtil {
         return List.copyOf(copyCollection1);
     }
 
+    static <T> Collection<T> union(Collection<T> c1, Collection<T> c2) {
+        List<T> result = new ArrayList<>(c1);
+        result.addAll(c2);
+        return List.copyOf(result);
+    }
+
 }

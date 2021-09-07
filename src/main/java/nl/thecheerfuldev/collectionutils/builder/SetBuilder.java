@@ -12,9 +12,22 @@ public class SetBuilder<T> {
         set = new HashSet<>();
     }
 
+    public SetBuilder(T input) {
+        this();
+        set.add(input);
+    }
+
     public SetBuilder(Collection<? extends T> input) {
         this();
         set.addAll(input);
+    }
+
+    public static <T> SetBuilder<T> builder(T input) {
+        return new SetBuilder<>(input);
+    }
+
+    public static <T> SetBuilder<T> builder(Collection<? extends T> input) {
+        return new SetBuilder<>(input);
     }
 
     public SetBuilder<T> add(T input) {

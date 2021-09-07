@@ -16,4 +16,8 @@ public class Sets {
         return Set.copyOf(CollectionsUtil.difference(set1, set2));
     }
 
+    public static <T> Set<T> union(Set<T> set1, Set<T> set2) {
+        return Set.copyOf(CollectionsUtil.union(set1, set2));
+    }
+
 }

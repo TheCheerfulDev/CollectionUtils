@@ -84,4 +84,21 @@ class SetsTest {
 
         assertThat(Sets.difference(set1, set2)).containsExactlyInAnyOrderElementsOf(set1);
     }
+
+    @Test
+    void union_with_same_set_returns_same_set() {
+        Set<String> completeSet = Set.of("A", "B", "C");
+
+        assertThat(Sets.union(completeSet, completeSet)).containsExactlyInAnyOrderElementsOf(completeSet);
+    }
+
+    @Test
+    void union_with_completely_different_lists_returns_complete_list() {
+        Set<String> set1 = Set.of("A", "B", "C");
+        Set<String> set2 = Set.of("X", "Y", "Z");
+
+        Set<String> expected = Set.of("A", "B", "C", "X", "Y", "Z");
+
+        assertThat(Sets.union(set1, set2)).containsExactlyInAnyOrderElementsOf(expected);
+    }
 }

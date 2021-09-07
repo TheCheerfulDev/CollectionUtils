@@ -21,10 +21,36 @@ class MapBuilderTest {
     }
 
     @Test
+    void builder_method_creates_map_with_same_content() {
+
+        Map<String, Integer> actual = MapBuilder.builder("A", 1)
+                .put("B", 2)
+                .build();
+
+        Map<String, Integer> expected = Map.of("A", 1, "B", 2);
+
+        assertThat(actual).containsExactlyEntriesOf(expected);
+    }
+
+    @Test
     void builder_with_initial_map_creates_map_with_same_content() {
         Map<String, Integer> initial = Map.of("A", 1, "B", 2);
 
         Map<String, Integer> actual = new MapBuilder<>(initial)
+                .put("C", 3)
+                .put("D", 4)
+                .build();
+
+        Map<String, Integer> expected = Map.of("A", 1, "B", 2, "C", 3, "D", 4);
+
+        assertThat(actual).containsExactlyEntriesOf(expected);
+    }
+
+    @Test
+    void builder_method_with_initial_map_creates_map_with_same_content() {
+        Map<String, Integer> initial = Map.of("A", 1, "B", 2);
+
+        Map<String, Integer> actual = MapBuilder.builder(initial)
                 .put("C", 3)
                 .put("D", 4)
                 .build();
