@@ -4,6 +4,9 @@ import java.util.Set;
 
 public class Sets {
 
+    private Sets() {
+    }
+
     public static <T> Set<T> intersection(Set<T> set1, Set<T> set2) {
         return Set.copyOf(CollectionsUtil.intersection(set1, set2));
     }

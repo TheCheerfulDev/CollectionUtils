@@ -2,9 +2,7 @@ package nl.thecheerfuldev.collectionutils.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ListBuilder<T> {
 

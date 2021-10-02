@@ -1,15 +1,16 @@
 package nl.thecheerfuldev.collectionutils.difference;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Maps {
+
+    private Maps() {
+    }
 
     public static <K, V> Map<K, DiffResult<K, V>> difference(Map<K, V> leftMap, Map<K, V> rightMap) {
         return leftMap.entrySet()
@@ -33,10 +34,7 @@ public class Maps {
             result.get(k).add(v);
         });
 
-        result.forEach((k, v) -> {
-            result.get(k);
-            result.put(k, Set.copyOf(result.get(k)));
-        });
+        result.forEach((k, v) -> result.put(k, Set.copyOf(result.get(k))));
 
         return Map.copyOf(result);
     }

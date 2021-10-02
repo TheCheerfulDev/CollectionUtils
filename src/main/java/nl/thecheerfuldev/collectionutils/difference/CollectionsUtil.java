@@ -5,7 +5,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class CollectionsUtil {
+final class CollectionsUtil {
+
+    private CollectionsUtil() {
+    }
 
     static <T> Collection<T> intersection(Collection<T> c1, Collection<T> c2) {
         return c1.stream()

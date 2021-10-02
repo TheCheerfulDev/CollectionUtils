@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Lists {
 
+    private Lists() {
+    }
+
     public static <T> List<T> intersection(List<T> list1, List<T> list2) {
         return List.copyOf(CollectionsUtil.intersection(list1, list2));
     }
