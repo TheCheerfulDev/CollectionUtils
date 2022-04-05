@@ -3,7 +3,6 @@ package nl.thecheerfuldev.collectionutils.difference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 final class CollectionsUtil {
 
@@ -11,9 +10,7 @@ final class CollectionsUtil {
     }
 
     static <T> Collection<T> intersection(Collection<T> c1, Collection<T> c2) {
-        return c1.stream()
-                .filter(c2::contains)
-                .collect(Collectors.toUnmodifiableList());
+        return c1.stream().filter(c2::contains).toList();
     }
 
     static <T> Collection<T> symmetric(Collection<T> c1, Collection<T> c2) {

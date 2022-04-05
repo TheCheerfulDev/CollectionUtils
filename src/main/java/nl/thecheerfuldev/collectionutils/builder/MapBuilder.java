@@ -37,5 +37,4 @@ public class MapBuilder<K, V> {
     public Map<K, V> build() {
         return Map.copyOf(map);
     }
-
 }
